@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe Nthiga — Full-Stack Developer</title>
+
+    <!-- Geist Sans + Geist Mono (variable woff2 from Vercel CDN) -->
+    <link rel="preload"
+          href="https://cdn.jsdelivr.net/npm/geist@1.3.3/dist/fonts/geist-sans/Geist%5Bwght%5D.woff2"
+          as="font" type="font/woff2" crossorigin>
+    <link rel="preload"
+          href="https://cdn.jsdelivr.net/npm/geist@1.3.3/dist/fonts/geist-mono/GeistMono%5Bwght%5D.woff2"
+          as="font" type="font/woff2" crossorigin>
+
+    <style>
+        @font-face {
+            font-family: 'Geist Sans';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.3.3/dist/fonts/geist-sans/Geist%5Bwght%5D.woff2') format('woff2');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Geist Mono';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.3.3/dist/fonts/geist-mono/GeistMono%5Bwght%5D.woff2') format('woff2');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Geist Sans', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-[#f4f4f5] text-[#171717] font-sans antialiased">
+
+    <!-- ================================================================== -->
+    <!--  STICKY NAVIGATION                                                  -->
+    <!-- ================================================================== -->
+    <nav id="navbar" class="sticky top-0 z-50 h-16 bg-white border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="#hero" class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-mono text-sm font-bold shrink-0 hover:bg-gray-800 transition-colors" aria-label="Joe Nthiga Home">
+                JN
+            </a>
+
+            <!-- Desktop links (hidden on mobile) -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#about" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">About</a>
+                <a href="#skills" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Skills</a>
+                <a href="#projects" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Projects</a>
+                <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
+                <a href="#contact" class="text-sm bg-black text-white px-4 py-2 rounded-full font-medium hover:bg-gray-800 transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+
+            <!-- Hamburger (visible on mobile only) -->
+            <button id="hamburger" class="md:hidden p-2 -mr-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Toggle menu" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-gray-700">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile dropdown menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-b border-gray-200 shadow-lg">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <a href="#about" class="block text-base py-3 border-b border-gray-100 font-medium text-gray-600 hover:text-black transition-colors">About</a>
+                <a href="#skills" class="block text-base py-3 border-b border-gray-100 font-medium text-gray-600 hover:text-black transition-colors">Skills</a>
+                <a href="#projects" class="block text-base py-3 border-b border-gray-100 font-medium text-gray-600 hover:text-black transition-colors">Projects</a>
+                <a href="#contact" class="block text-base py-3 border-b border-gray-100 font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
+                <a href="#contact" class="block text-base py-3 mt-1 mb-1 text-center bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+    <!-- ================================================================== -->
+    <!--  1. HERO                                                            -->
+    <!-- ================================================================== -->
+    <section id="hero" class="bg-[#f4f4f5] py-12 sm:py-16 lg:py-20 pt-20 sm:pt-24 lg:pt-28">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+            <!-- Profile photo -->
+            <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-gray-200 bg-gray-300 overflow-hidden mx-auto mb-6">
+                <img src="/images/projects/profile.jpg" alt="Joe Nthiga"
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'">
+            </div>
+
+            <!-- Name -->
+            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#171717] mb-3">
+                Joe Nthiga
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-6">
+                Self-Taught Full-Stack Developer
+            </p>
+
+            <!-- Bio -->
+            <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                I am a self-taught Full-Stack Developer and AI enthusiast with
+                a strong passion for building real-world web and mobile applications.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <a href="#projects"
+                   class="bg-black text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-full font-medium text-sm sm:text-base hover:bg-[#1f2937] transition-colors">
+                    View My Work
+                </a>
+                <a href="#contact"
+                   class="bg-white border border-gray-300 px-6 py-2.5 sm:px-8 sm:py-3 rounded-full font-medium text-sm sm:text-base text-gray-700 hover:border-gray-400 hover:bg-gray-50 transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+
+            <!-- Resume download -->
+            <a href="#"
+               class="inline-flex items-center justify-center gap-1.5 mt-6 text-sm text-gray-600 hover:text-black transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                Download Resume
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!--  2. ABOUT ME                                                        -->
+    <!-- ================================================================== -->
+    <section id="about" class="bg-white py-12 sm:py-16 lg:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section heading -->
+            <div class="mb-8 sm:mb-12 text-center">
+                <p class="text-xs font-mono uppercase tracking-wider text-gray-500 mb-2">About</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-[#171717]">About Me</h2>
+            </div>
+
+            <p class="text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-4">
+                I am a self-taught Full-Stack Developer and AI enthusiast with
+                a strong passion for building real-world web and mobile applications.
+            </p>
+
+            <p class="text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                I have learned modern web and software development through
+                hands-on practice, online courses, and project-based learning. I enjoy
+                turning ideas into functional, clean, and user-friendly applications
+                using modern technologies. I focus on writing clean code, learning
+                continuously, and building practical solutions that solve real problems.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!--  3. EDUCATION                                                       -->
+    <!-- ================================================================== -->
+    <section id="education" class="bg-[#f4f4f5] py-12 sm:py-16 lg:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section heading -->
+            <div class="mb-8 sm:mb-12 text-center">
+                <p class="text-xs font-mono uppercase tracking-wider text-gray-500 mb-2">Learning</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-[#171717]">Education / Learning</h2>
+            </div>
+
+            <!-- Education card -->
+            <div class="max-w-2xl mx-auto p-6 sm:p-8 bg-white border border-gray-200 rounded-xl hover:border-gray-300 transition-colors text-left">
+
+                <!-- Institution name -->
+                <h3 class="text-lg sm:text-xl font-semibold text-[#171717] mb-1">
+                    Self-Taught Full-Stack Developer
+                </h3>
+
+                <!-- Period / subtitle -->
+                <p class="text-sm sm:text-base text-gray-500 mb-4">
+                    Online Learning &amp; Practical Projects
+                </p>
+
+                <!-- Description -->
+                <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-5">
+                    I studied software development through online platforms
+                    including YouTube tutorials, FreeCodeCamp, and Udemy courses.
+                    My learning approach focuses on hands-on experience by building
+                    complete applications from scratch.
+                </p>
+
+                <!-- Divider -->
+                <hr class="border-t border-gray-200 my-4">
+
+                <!-- Subheading -->
+                <p class="text-sm font-medium text-gray-700 mb-3">
+                    Key areas of study include:
+                </p>
+
+                <!-- Study areas list -->
+                <ul class="space-y-1.5">
+                    <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></span>
+                        <span class="text-sm sm:text-base text-gray-600">Web development (Frontend &amp; Backend)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></span>
+                        <span class="text-sm sm:text-base text-gray-600">Mobile application development</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></span>
+                        <span class="text-sm sm:text-base text-gray-600">Database design</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></span>
+                        <span class="text-sm sm:text-base text-gray-600">API development and integration</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></span>
+                        <span class="text-sm sm:text-base text-gray-600">Basic AI and data-driven applications</span>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!--  4. SKILLS                                                          -->
+    <!-- ================================================================== -->
+    <section id="skills" class="bg-white py-12 sm:py-16 lg:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section heading -->
+            <div class="mb-8 sm:mb-12 text-center">
+                <p class="text-xs font-mono uppercase tracking-wider text-gray-500 mb-2">Skills</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-[#171717]">Core Competencies</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                <!-- Languages -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">
+                        Programming Languages
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">JavaScript (ES6+)</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Python</span>
+                    </div>
+                </div>
+
+                <!-- Frontend -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Frontend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">React</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Next.js</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Tailwind CSS</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Vite</span>
+                    </div>
+                </div>
+
+                <!-- Mobile -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Mobile</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">React Native</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Expo</span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Node.js</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Express.js</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">FastAPI</span>
+                    </div>
+                </div>
+
+                <!-- AI / ML -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">AI / ML</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">scikit-learn</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">PyTorch</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">NumPy, Pandas</span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Git &amp; GitHub</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Docker</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">PostgreSQL</span>
+                        <span class="px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-full text-gray-700 hover:border-gray-300 transition-colors">Vercel</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!--  5. PROJECTS                                                        -->
+    <!-- ================================================================== -->
+    <section id="projects" class="bg-[#f4f4f5] py-12 sm:py-16 lg:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section heading -->
+            <div class="mb-8 sm:mb-12 text-center">
+                <p class="text-xs font-mono uppercase tracking-wider text-gray-500 mb-2">Work</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-[#171717]">Featured Projects</h2>
+            </div>
+
+            <!-- Filter bar -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <div class="inline-flex rounded-full border border-gray-200 p-1 bg-white">
+                    <button class="px-4 py-1.5 text-sm rounded-full font-medium bg-black text-white">All</button>
+                    <button class="px-4 py-1.5 text-sm rounded-full font-medium text-gray-700 hover:bg-gray-50 transition-colors">Web</button>
+                    <button class="px-4 py-1.5 text-sm rounded-full font-medium text-gray-700 hover:bg-gray-50 transition-colors">Backend</button>
+                    <button class="px-4 py-1.5 text-sm rounded-full font-medium text-gray-700 hover:bg-gray-50 transition-colors">Mobile</button>
+                </div>
+            </div>
+
+            <!-- Project cards -->
+            <div class="grid grid-cols-1 gap-6">
+                <!-- Project 1 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-colors">
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
+                            E-commerce Platform
+                        </h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-3">
+                            A full-featured online shopping platform with cart functionality and payment integration.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full">React</span>
+                            <span class="px-2 py-1 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full">Node.js</span>
+                            <span class="px-2 py-1 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full">MongoDB</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="#"
+                               class="flex-1 text-center py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors text-sm">
+                                Live Demo
+                            </a>
+                            <a href="#"
+                               class="flex-1 text-center py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-colors">
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
+                            Task Management App
+                        </h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-3">
+                            A productivity application for managing tasks and projects with team collaboration features.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full">Next.js</span>
+                            <span class="px-2 py-1 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full">TypeScript</span>
+                            <span class="px-2 py-1 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-full">Firebase</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="#"
+                               class="flex-1 text-center py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors text-sm">
+                                Live Demo
+                            </a>
+                            <a href="#"
+                               class="flex-1 text-center py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!--  6. CONTACT                                                         -->
+    <!-- ================================================================== -->
+    <section id="contact" class="bg-white py-12 sm:py-16 lg:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section heading -->
+            <div class="mb-8 sm:mb-12 text-center">
+                <p class="text-xs font-mono uppercase tracking-wider text-gray-500 mb-2">Contact</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-[#171717]">Get In Touch</h2>
+                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mt-3">
+                    Have a question or want to work together? I'd love to hear from you.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+                <!-- Contact info -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-4 text-gray-800">
+                        Contact Information
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <!-- Email icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke-width="1.5" stroke="currentColor"
+                                 class="w-5 h-5 text-gray-600 mt-0.5 shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            </svg>
+                            <span class="text-sm sm:text-base text-gray-700">joenthiga@gmail.com</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <!-- Phone icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke-width="1.5" stroke="currentColor"
+                                 class="w-5 h-5 text-gray-600 mt-0.5 shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                            </svg>
+                            <span class="text-sm sm:text-base text-gray-700">+254701747503</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <!-- Location icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke-width="1.5" stroke="currentColor"
+                                 class="w-5 h-5 text-gray-600 mt-0.5 shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                            <span class="text-sm sm:text-base text-gray-700">Nairobi, Kenya</span>
+                        </div>
+                    </div>
+
+                    <!-- Social links -->
+                    <div class="mt-6">
+                        <h4 class="text-base sm:text-lg font-semibold mb-3 text-gray-800">
+                            Connect with me
+                        </h4>
+                        <div class="flex gap-3">
+                            <a href="mailto:joenthiga@gmail.com"
+                               class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
+                               aria-label="Email">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                </svg>
+                            </a>
+                            <a href="https://github.com/Cashkid12" target="_blank" rel="noopener noreferrer"
+                               class="border border-gray-300 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                               aria-label="GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                     viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com/in/joe-nthiga" target="_blank" rel="noopener noreferrer"
+                               class="border border-gray-300 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                               aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                     viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact form -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-semibold mb-4 text-gray-800">
+                        Send a Message
+                    </h3>
+                    <form class="space-y-3 sm:space-y-4">
+                        <div>
+                            <label for="name" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                                Your Name
+                            </label>
+                            <input type="text" id="name" name="name"
+                                   class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-colors"
+                                   placeholder="Enter your name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                                Your Email
+                            </label>
+                            <input type="email" id="email" name="email"
+                                   class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-colors"
+                                   placeholder="Enter your email">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                                Subject
+                            </label>
+                            <input type="text" id="subject" name="subject"
+                                   class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-colors"
+                                   placeholder="Enter subject">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                                Message
+                            </label>
+                            <textarea id="message" name="message" rows="3"
+                                      class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-colors resize-none"
+                                      placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit"
+                                class="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-gray-800 transition-colors text-sm">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- ================================================================== -->
+    <!--  7. FOOTER                                                          -->
+    <!-- ================================================================== -->
+    <footer class="bg-[#f4f4f5] py-8 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:justify-between items-center gap-4">
+
+            <!-- Copyright -->
+            <p class="text-sm text-gray-500">
+                &copy; 2026 Joe Nthiga. All rights reserved.
+            </p>
+
+            <!-- Social icons -->
+            <div class="flex items-center gap-3">
+                <!-- GitHub -->
+                <a href="https://github.com/Cashkid12" target="_blank" rel="noopener noreferrer"
+                   class="w-9 h-9 rounded-full border border-gray-300 hover:border-gray-500 flex items-center justify-center text-gray-600 hover:text-black transition-colors"
+                   aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:joenthiga@gmail.com"
+                   class="w-9 h-9 rounded-full border border-gray-300 hover:border-gray-500 flex items-center justify-center text-gray-600 hover:text-black transition-colors"
+                   aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="m22 4-10 8L2 4"/>
+                    </svg>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/joe-nthiga" target="_blank" rel="noopener noreferrer"
+                   class="w-9 h-9 rounded-full border border-gray-300 hover:border-gray-500 flex items-center justify-center text-gray-600 hover:text-black transition-colors"
+                   aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================================================================== -->
+    <!--  NAVBAR SCRIPTS: scroll effect + mobile menu toggle                 -->
+    <!-- ================================================================== -->
+    <script>
+        (function () {
+            var navbar = document.getElementById('navbar');
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobile-menu');
+
+            /* ---- scroll → bg-white/90 + backdrop-blur ---- */
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 0) {
+                    navbar.classList.add('bg-white/90', 'backdrop-blur');
+                } else {
+                    navbar.classList.remove('bg-white/90', 'backdrop-blur');
+                }
+            });
+
+            /* ---- mobile menu toggle ---- */
+            hamburger.addEventListener('click', function () {
+                var isOpen = mobileMenu.classList.toggle('hidden');
+                hamburger.setAttribute('aria-expanded', String(!isOpen));
+            });
+
+            /* ---- close mobile menu on link click ---- */
+            var mobileLinks = mobileMenu.querySelectorAll('a');
+            for (var i = 0; i < mobileLinks.length; i++) {
+                mobileLinks[i].addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>

@@ -12,7 +12,7 @@ export default function AdminLogin() {
     e.preventDefault();
     
     // Simple password check - in a real app, this would be more secure
-    if (password === 'admin123') { // You can change this to your preferred password
+    if (password === 'Joecashkid12') {
       // Store authentication state
       localStorage.setItem('admin-auth', 'true');
       router.push('/admin');

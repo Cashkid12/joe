@@ -1,15 +1,27 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Geist Sans + Geist Mono (variable woff2 from CDN) */
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.3.3/dist/fonts/geist-sans/Geist%5Bwght%5D.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.3.3/dist/fonts/geist-mono/GeistMono%5Bwght%5D.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --background: #f4f4f5;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,10 +29,196 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+
+  /* Section backgrounds */
+  body {
+    background-color: #0a0a0a;
+    color: #ededed;
+  }
+
+  .bg-\[\#f4f4f5\] {
+    background-color: #0a0a0a;
+  }
+
+  .bg-white {
+    background-color: #171717;
+  }
+
+  /* Navbar */
+  nav {
+    background-color: #171717;
+    border-color: #27272a;
+  }
+
+  nav .bg-white\/90 {
+    background-color: rgba(23, 23, 23, 0.9);
+  }
+
+  nav .bg-white {
+    background-color: #171717;
+  }
+
+  /* Borders */
+  .border-gray-200 {
+    border-color: #27272a;
+  }
+
+  .border-gray-300 {
+    border-color: #3f3f46;
+  }
+
+  .border-gray-100 {
+    border-color: #27272a;
+  }
+
+  .hover\:border-gray-300:hover {
+    border-color: #3f3f46;
+  }
+
+  .hover\:border-gray-400:hover {
+    border-color: #52525b;
+  }
+
+  .hover\:border-gray-500:hover {
+    border-color: #71717a;
+  }
+
+  /* Text colors */
+  .text-\[\#171717\] {
+    color: #ededed;
+  }
+
+  .text-gray-900 {
+    color: #ededed;
+  }
+
+  .text-gray-800 {
+    color: #d4d4d8;
+  }
+
+  .text-gray-700 {
+    color: #a1a1aa;
+  }
+
+  .text-gray-600 {
+    color: #a1a1aa;
+  }
+
+  .text-gray-500 {
+    color: #71717a;
+  }
+
+  .text-gray-400 {
+    color: #52525b;
+  }
+
+  /* Buttons */
+  .bg-black {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .bg-black svg {
+    color: #000000;
+  }
+
+  .bg-black.text-white {
+    color: #000000;
+  }
+
+  .hover\:bg-\[\#1f2937\]:hover {
+    background-color: #e5e5e5;
+  }
+
+  .hover\:bg-gray-800:hover {
+    background-color: #e5e5e5;
+    color: #000000;
+  }
+
+  /* Tags */
+  .bg-gray-100 {
+    background-color: #27272a;
+  }
+
+  .bg-gray-100 .text-gray-700 {
+    color: #d4d4d8;
+  }
+
+  /* Form inputs */
+  input,
+  textarea,
+  select {
+    background-color: #0a0a0a;
+    border-color: #3f3f46;
+    color: #ededed;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #52525b;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    --tw-ring-color: #ffffff;
+  }
+
+  /* Bullet dots */
+  .rounded-full.bg-black {
+    background-color: #ffffff;
+  }
+
+  /* Dividers */
+  hr {
+    border-color: #27272a;
+  }
+
+  /* Nav links */
+  .text-gray-600.hover\:text-black:hover {
+    color: #ffffff;
+  }
+
+  .hover\:text-black:hover {
+    color: #ffffff;
+  }
+
+  /* Social icon hover */
+  .hover\:text-black:hover svg {
+    color: #ffffff;
+  }
+
+  /* Cards hover */
+  .hover\:bg-gray-50:hover {
+    background-color: #27272a;
+  }
+
+  .hover\:bg-gray-100:hover {
+    background-color: #3f3f46;
+  }
+
+  /* Admin shadow */
+  .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Filter bar */
+  .inline-flex.rounded-full.border.border-gray-300.bg-white {
+    background-color: #171717;
+  }
+
+  /* Gradient fallback for images */
+  .from-gray-100 {
+    --tw-gradient-from: #27272a;
+  }
+
+  .to-gray-200 {
+    --tw-gradient-to: #3f3f46;
+  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: 'Geist Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
